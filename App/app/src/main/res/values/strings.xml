@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Notes</string>
+    <string name="sem_notas">Nenhuma Nota</string>
+    <string name="notas">Minhas Notas</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="salvar">Salvar</string>
+    <string name="deletar">Deletar</string>
 </resources>

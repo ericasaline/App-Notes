@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/key_lime"
     tools:context=".ui.NotesActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/sem_notas"
         android:textSize="28sp"
-        android:textColor="@color/pink"
+        android:textColor="@color/dark_sienna"
         android:fontFamily="@font/poppins_light"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,30 +23,33 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt_título"
+        android:id="@+id/txt_notas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/notas"
         android:textSize="32sp"
-        android:textColor="@color/pink"
+        android:textColor="@color/dark_sienna"
         android:fontFamily="@font/poppins_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_notes"
+        android:id="@+id/recycler_notas"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="15dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         tools:listitem="@layout/item_note"
-        tools:itemCount="8"
+        tools:itemCount="3"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:spanCount="2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_título" />
+        app:layout_constraintTop_toBottomOf="@id/txt_notas" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_adicionar"

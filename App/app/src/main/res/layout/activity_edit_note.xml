@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/key_lime"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -38,7 +39,36 @@
             android:layout_height="wrap_content"
             tools:context=".ui.EditNoteActivity">
 
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_titulo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:textSize="28sp"
+                android:textColor="@color/dark_sienna"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="@string/titulo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@tools:sample/lorem[1]" />
 
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_conteudo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="top"
+                android:hint="@string/conteudo"
+                android:textColor="@color/dark_sienna"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_light"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/edit_titulo"
+                app:layout_constraintStart_toStartOf="@id/edit_titulo"
+                app:layout_constraintTop_toBottomOf="@id/edit_titulo"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="@tools:sample/lorem[50]" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

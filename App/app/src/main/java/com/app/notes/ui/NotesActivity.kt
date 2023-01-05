@@ -1,5 +1,6 @@
 package com.app.notes.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.app.notes.databinding.ActivityNotesBinding
@@ -12,5 +13,13 @@ class NotesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        addNota()
+    }
+
+    private fun addNota() {
+        binding.btnAdicionar.setOnClickListener {
+            startActivity(Intent(this@NotesActivity, EditNoteActivity::class.java))
+        }
     }
 }

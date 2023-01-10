@@ -7,6 +7,6 @@
     <string name="deletar">Deletar</string>
     <string name="titulo">Título</string>
     <string name="conteudo">Conteúdo</string>
-    <string name="confirmar_delecao">Deseja realmente deletar essa nota ? \nEssa ação não poderá ser desfeita</string>
+    <string name="confirmar_delecao">Deseja realmente deletar essa nota ? \nEssa ação não poderá ser desfeita!</string>
     <string name="cancelar">Cancelar</string>
 </resources>

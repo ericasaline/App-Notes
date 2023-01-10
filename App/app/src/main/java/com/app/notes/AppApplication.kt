@@ -1,6 +1,8 @@
 package com.app.notes
 
 import android.app.Application
+import com.app.notes.di.dataModule
+import com.app.notes.di.databaseModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -9,7 +11,7 @@ class AppApplication: Application() {
         super.onCreate()
         startKoin {
             androidContext(this@AppApplication)
-            // modules()
+            modules(databaseModule, dataModule)
         }
     }
 }

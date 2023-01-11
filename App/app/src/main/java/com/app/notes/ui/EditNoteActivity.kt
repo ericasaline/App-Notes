@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.app.notes.R
 import com.app.notes.databinding.ActivityEditNoteBinding
 import com.app.notes.databinding.DialogConfirmBinding
+import com.app.notes.ui.viewmodel.ViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EditNoteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditNoteBinding
+    private val viewModel: ViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

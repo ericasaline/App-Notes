@@ -2,9 +2,7 @@ package com.app.notes.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.app.notes.database.entity.NoteModel
 import com.app.notes.databinding.ActivityNotesBinding
 import com.app.notes.ui.viewmodel.ViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,9 +18,6 @@ class NotesActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         addNota()
-
-        teste()
-        testeStatus()
     }
 
     private fun addNota() {
@@ -31,18 +26,9 @@ class NotesActivity : AppCompatActivity() {
         }
     }
 
-    fun teste() {
-        var testeModel = NoteModel("2", "Titulo", "Conteudo")
-        viewModel.inserir(testeModel)
-    }
+    private fun listar() {
+        viewModel.notes.observe(this) { notes ->
 
-    fun testeStatus() {
-        viewModel.iserirStatus.observe(this) {
-            if (it) {
-                Log.i("STATUS", "SUCESSO")
-            } else {
-                Log.i("STATUS", "ERRO")
-            }
         }
     }
 }

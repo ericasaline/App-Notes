@@ -9,18 +9,23 @@ import com.app.notes.databinding.ItemNoteBinding
 class NoteAdapter(private val notes: List<NoteModel>)
     : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
 
-        inner class ViewHolder(binding: ItemNoteBinding)
-            : RecyclerView.ViewHolder(binding.root) {
+    var onClickItem: (id: String) -> Unit = {}
 
-                private val titulo = binding.txtTitulo
-                private val conteudo = binding.txtConteudo
+    inner class ViewHolder(binding: ItemNoteBinding)
+        : RecyclerView.ViewHolder(binding.root) {
 
-                fun bind(note: NoteModel) {
-                    titulo.text = note.titulo
-                    conteudo.text = note.conteudo
-                }
+        private val titulo = binding.txtTitulo
+        private val conteudo = binding.txtConteudo
 
+        fun bind(note: NoteModel) {
+            titulo.text = note.titulo
+            conteudo.text = note.conteudo
+
+            itemView.setOnClickListener {
+                onClickItem(note.id)
             }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false)

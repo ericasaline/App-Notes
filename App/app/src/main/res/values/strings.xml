@@ -9,4 +9,10 @@
     <string name="conteudo">Conteúdo</string>
     <string name="confirmar_delecao">Deseja realmente deletar essa nota ? \nEssa ação não poderá ser desfeita!</string>
     <string name="cancelar">Cancelar</string>
+    <string name="info_delecao_sucesso">Nota Excluída!</string>
+    <string name="info_delecao_falha">Erro ao excluir!</string>
+    <string name="info_atualizacao_sucesso">Nota Atualizada!</string>
+    <string name="info_atualizacao_falha">Erro ao atualizar!</string>
+    <string name="info_insercao_sucesso">Nota Criada!</string>
+    <string name="info_insercao_falha">Erro ao Criar!</string>
 </resources>

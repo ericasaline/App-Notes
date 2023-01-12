@@ -9,7 +9,7 @@ import java.util.UUID
 data class NoteModel(
     @PrimaryKey
     @ColumnInfo(name = "ID")
-    val id: String = UUID.randomUUID().toString(),
+    val id: String,
     @ColumnInfo(name = "TITULO")
     val titulo: String,
     @ColumnInfo(name = "CONTEUDO")

@@ -43,7 +43,7 @@ class EditNoteActivity : AppCompatActivity() {
             when(option.itemId) {
                 R.id.menu_salvar -> {
                     if(checkNote) {
-                        // update()
+                        update()
                     } else {
                         insert()
                     }
@@ -129,7 +129,7 @@ class EditNoteActivity : AppCompatActivity() {
 
     private fun update() {
         viewModel.update(
-            id, binding.editTitulo.text.toString(), binding.editConteudo.text.toString()
+            NoteModel(id, binding.editTitulo.text.toString(), binding.editConteudo.text.toString())
         )
     }
 

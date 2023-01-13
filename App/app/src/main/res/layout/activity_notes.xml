@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/key_lime"
+    android:background="@drawable/background"
     tools:context=".ui.NotesActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/sem_notas"
         android:textSize="28sp"
-        android:textColor="@color/dark_sienna"
+        android:textColor="@color/light_pink"
         android:fontFamily="@font/poppins_light"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/notas"
         android:textSize="32sp"
-        android:textColor="@color/dark_sienna"
+        android:textColor="@color/white"
         android:fontFamily="@font/poppins_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

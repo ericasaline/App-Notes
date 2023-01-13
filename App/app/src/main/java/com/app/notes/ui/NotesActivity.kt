@@ -12,6 +12,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class NotesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNotesBinding
+    private lateinit var adapter: NoteAdapter
     private val viewModel: ViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +23,15 @@ class NotesActivity : AppCompatActivity() {
         viewModel.showAll()
         createNote()
         showNotes()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        //Teste--------------
+        viewModel.showAll()
+        showNotes()
+        //--------------------
     }
 
     private fun createNote() {
@@ -36,7 +46,7 @@ class NotesActivity : AppCompatActivity() {
                 binding.txtInfo.visibility = View.VISIBLE
                 binding.recyclerNotas.visibility = View.GONE
             } else {
-                val adapter = NoteAdapter(notes)
+                adapter = NoteAdapter(notes)
 
                 binding.recyclerNotas.adapter = adapter
                 binding.txtInfo.visibility = View.GONE

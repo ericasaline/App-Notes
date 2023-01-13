@@ -13,9 +13,9 @@ class RepositoryImpl(private val room: NoteRoom): Repository {
         }
     }
 
-    override suspend fun update(id: String, titulo: String, conteudo: String): Boolean {
+    override suspend fun update(note: NoteModel): Boolean {
         return try {
-            room.update(id, titulo, conteudo)
+            room.update(note)
             true
         } catch(e: Exception) {
             false

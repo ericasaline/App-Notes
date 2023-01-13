@@ -2,6 +2,8 @@
 <resources>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
-    <color name="dark_sienna">#3d0814</color>
-    <color name="key_lime">#e7f9a9</color>
+    <color name="light_pink">#f0d6f3</color>
+    <color name="pink">#f272ae</color>
+    <color name="light_purple">#cc74d8</color>
+    <color name="purple">#a772f2</color>
 </resources>

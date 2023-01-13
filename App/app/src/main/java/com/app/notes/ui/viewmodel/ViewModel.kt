@@ -30,8 +30,8 @@ class ViewModel(private val repository: Repository): ViewModel() {
         _insertStatus.postValue(result)
     }
 
-    fun update(id: String, titulo: String, conteudo: String) = viewModelScope.launch {
-        val result = repository.update(id, titulo, conteudo)
+    fun update(note: NoteModel) = viewModelScope.launch {
+        val result = repository.update(note)
         _updateStatus.postValue(result)
     }
 

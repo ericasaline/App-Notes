@@ -1,13 +1,15 @@
 package com.app.notes.ui
 
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.app.notes.R
 import com.app.notes.database.entity.NoteModel
 import com.app.notes.databinding.ActivityEditNoteBinding
-import com.app.notes.databinding.DialogConfirmBinding
+import com.app.notes.databinding.DialogInfoBinding
 import com.app.notes.ui.viewmodel.ViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -68,7 +70,7 @@ class EditNoteActivity : AppCompatActivity() {
 
     private fun showDialog() {
         val dialog: AlertDialog
-        val view = DialogConfirmBinding.inflate(layoutInflater)
+        val view = DialogInfoBinding.inflate(layoutInflater)
         val build = AlertDialog.Builder(this, R.style.AlertDialog)
 
         build.setView(view.root)
@@ -87,7 +89,14 @@ class EditNoteActivity : AppCompatActivity() {
     }
 
     private fun toast(text: String) {
-        Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).show()
+        val layout: View = layoutInflater.inflate(
+            R.layout.toast_info, findViewById(R.id.toast_layout)
+        )
+        Toast(this).apply {
+            duration = Toast.LENGTH_SHORT
+            layout.findViewById<TextView>(R.id.toast_text).text = text
+            view = layout
+        }.show()
     }
 
     private fun checkDelete() {
@@ -120,6 +129,7 @@ class EditNoteActivity : AppCompatActivity() {
     private fun checkInsert() {
         viewModel.insertStatus.observe(this) { status ->
             if(status) {
+                checkNote = true
                 toast(getString(R.string.info_insercao_sucesso))
             } else {
                 toast(getString(R.string.info_insercao_falha))
@@ -137,6 +147,7 @@ class EditNoteActivity : AppCompatActivity() {
         viewModel.updateStatus.observe(this) { status ->
             if(status) {
                 toast(getString(R.string.info_atualizacao_sucesso))
+                binding.editTitulo.clearFocus()
             } else {
                 toast(getString(R.string.info_atualizacao_falha))
             }

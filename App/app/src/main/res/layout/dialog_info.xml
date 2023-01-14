@@ -42,6 +42,8 @@
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
             android:letterSpacing="0"
+            app:strokeColor="@color/white"
+            app:strokeWidth="3dp"
             app:backgroundTint="@color/light_pink"
             app:cornerRadius="35dp" />
 

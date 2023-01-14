@@ -44,12 +44,14 @@ class NotesActivity : AppCompatActivity() {
         viewModel.notes.observe(this) { notes ->
             if(notes.isEmpty()) {
                 binding.txtInfo.visibility = View.VISIBLE
+                binding.textInputLayout.visibility = View.GONE
                 binding.recyclerNotas.visibility = View.GONE
             } else {
                 adapter = NoteAdapter(notes)
 
                 binding.recyclerNotas.adapter = adapter
                 binding.txtInfo.visibility = View.GONE
+                binding.textInputLayout.visibility = View.VISIBLE
                 binding.recyclerNotas.visibility = View.VISIBLE
 
                 adapter.onClickItem = { id ->

@@ -43,19 +43,23 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        app:hintEnabled="false"
+        app:startIconDrawable="@drawable/ic_search"
+        app:endIconMode="clear_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_notas"
-        app:startIconDrawable="@drawable/ic_search"
-        app:endIconMode="clear_text"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_search"
             android:fontFamily="@font/poppins_light"
-            android:text="@string/pesquisar" />
+            android:hint="@string/pesquisar"
+            android:imeOptions="actionSearch"
+            android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

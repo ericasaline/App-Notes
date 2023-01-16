@@ -2,9 +2,11 @@ package com.app.notes.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.app.notes.databinding.ActivityNotesBinding
+import com.app.notes.hideSoftKeyboard
 import com.app.notes.ui.adapter.NoteAdapter
 import com.app.notes.ui.viewmodel.ViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,15 +25,15 @@ class NotesActivity : AppCompatActivity() {
         viewModel.showAll()
         createNote()
         showNotes()
+        listenToSearchInput()
     }
 
     override fun onResume() {
         super.onResume()
 
-        //Teste--------------
+        //Teste
         viewModel.showAll()
         showNotes()
-        //--------------------
     }
 
     private fun createNote() {
@@ -60,6 +62,17 @@ class NotesActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
+        }
+    }
+
+    private fun listenToSearchInput() {
+        binding.inputEditText.setOnKeyListener { _, keycode, keyevent ->
+            if(keycode == KeyEvent.KEYCODE_ENTER && keyevent.action == KeyEvent.ACTION_UP) {
+                hideSoftKeyboard()
+                // search viewModel
+                // binding.inputEditText.text?.clear()
+            }
+            false
         }
     }
 }

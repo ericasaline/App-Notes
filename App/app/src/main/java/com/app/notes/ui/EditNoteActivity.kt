@@ -10,6 +10,7 @@ import com.app.notes.R
 import com.app.notes.database.entity.NoteModel
 import com.app.notes.databinding.ActivityEditNoteBinding
 import com.app.notes.databinding.DialogInfoBinding
+import com.app.notes.hideSoftKeyboard
 import com.app.notes.ui.viewmodel.ViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -49,6 +50,7 @@ class EditNoteActivity : AppCompatActivity() {
                     } else {
                         insert()
                     }
+                    clearFocus()
                     true
                 }
 
@@ -120,10 +122,24 @@ class EditNoteActivity : AppCompatActivity() {
         }
     }
 
+    private fun emptyVerify(): Boolean {
+        return (binding.editTitulo.text.toString().isEmpty() &&
+                binding.editConteudo.text.toString().isEmpty())
+    }
+
     private fun insert() {
-        viewModel.insert(
-            NoteModel(id, binding.editTitulo.text.toString(), binding.editConteudo.text.toString())
-        )
+        val emptyField = emptyVerify()
+        if(emptyField) {
+            toast(getString(R.string.campo_vazio))
+        } else {
+            viewModel.insert(
+                NoteModel(
+                    id,
+                    binding.editTitulo.text.toString(),
+                    binding.editConteudo.text.toString()
+                )
+            )
+        }
     }
 
     private fun checkInsert() {
@@ -138,19 +154,33 @@ class EditNoteActivity : AppCompatActivity() {
     }
 
     private fun update() {
-        viewModel.update(
-            NoteModel(id, binding.editTitulo.text.toString(), binding.editConteudo.text.toString())
-        )
+        val emptyField = emptyVerify()
+        if(emptyField) {
+            toast(getString(R.string.campo_vazio))
+        } else {
+            viewModel.update(
+                NoteModel(
+                    id,
+                    binding.editTitulo.text.toString(),
+                    binding.editConteudo.text.toString()
+                )
+            )
+        }
     }
 
     private fun checkUpdate() {
         viewModel.updateStatus.observe(this) { status ->
             if(status) {
                 toast(getString(R.string.info_atualizacao_sucesso))
-                binding.editTitulo.clearFocus()
             } else {
                 toast(getString(R.string.info_atualizacao_falha))
             }
         }
+    }
+
+    private fun clearFocus() {
+        hideSoftKeyboard()
+        binding.editTitulo.clearFocus()
+        binding.editConteudo.clearFocus()
     }
 }

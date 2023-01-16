@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/light_pink"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.EditNoteActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/layout_toolbar"
@@ -37,7 +38,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".ui.EditNoteActivity">
+            tools:context=".ui.activity.EditNoteActivity">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edit_titulo"

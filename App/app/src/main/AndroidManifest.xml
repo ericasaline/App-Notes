@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Notes"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,10 +22,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.NotesActivity"
+            android:name=".ui.activity.NotesActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.EditNoteActivity"
+            android:name=".ui.activity.EditNoteActivity"
             android:exported="false" />
     </application>
 </manifest>

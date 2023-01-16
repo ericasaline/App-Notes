@@ -15,6 +15,7 @@
     <string name="info_atualizacao_falha">Erro ao atualizar!</string>
     <string name="info_insercao_sucesso">Nota Criada!</string>
     <string name="info_insercao_falha">Erro ao Criar!</string>
+    <string name="info_nenhum_resultado">A busca não retornou \nnenhum resultado!</string>
     <string name="pesquisar">Pesquisar</string>
     <string name="campo_vazio">Não há nada para salvar!</string>
 </resources>

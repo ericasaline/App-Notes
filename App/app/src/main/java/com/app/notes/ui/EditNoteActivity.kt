@@ -2,8 +2,6 @@ package com.app.notes.ui
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.app.notes.R
@@ -11,6 +9,7 @@ import com.app.notes.database.entity.NoteModel
 import com.app.notes.databinding.ActivityEditNoteBinding
 import com.app.notes.databinding.DialogInfoBinding
 import com.app.notes.hideSoftKeyboard
+import com.app.notes.showToast
 import com.app.notes.ui.viewmodel.ViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -90,23 +89,12 @@ class EditNoteActivity : AppCompatActivity() {
         }
     }
 
-    private fun toast(text: String) {
-        val layout: View = layoutInflater.inflate(
-            R.layout.toast_info, findViewById(R.id.toast_layout)
-        )
-        Toast(this).apply {
-            duration = Toast.LENGTH_SHORT
-            layout.findViewById<TextView>(R.id.toast_text).text = text
-            view = layout
-        }.show()
-    }
-
     private fun checkDelete() {
         viewModel.deleteStatus.observe(this) { status ->
             if(status) {
-                toast(getString(R.string.info_delecao_sucesso))
+                showToast(getString(R.string.info_delecao_sucesso), this)
             } else {
-                toast(getString(R.string.info_delecao_falha))
+                showToast(getString(R.string.info_delecao_falha), this)
             }
         }
     }
@@ -130,7 +118,7 @@ class EditNoteActivity : AppCompatActivity() {
     private fun insert() {
         val emptyField = emptyVerify()
         if(emptyField) {
-            toast(getString(R.string.campo_vazio))
+            showToast(getString(R.string.campo_vazio), this)
         } else {
             viewModel.insert(
                 NoteModel(
@@ -146,9 +134,9 @@ class EditNoteActivity : AppCompatActivity() {
         viewModel.insertStatus.observe(this) { status ->
             if(status) {
                 checkNote = true
-                toast(getString(R.string.info_insercao_sucesso))
+                showToast(getString(R.string.info_insercao_sucesso), this)
             } else {
-                toast(getString(R.string.info_insercao_falha))
+                showToast(getString(R.string.info_insercao_falha), this)
             }
         }
     }
@@ -156,7 +144,7 @@ class EditNoteActivity : AppCompatActivity() {
     private fun update() {
         val emptyField = emptyVerify()
         if(emptyField) {
-            toast(getString(R.string.campo_vazio))
+            showToast(getString(R.string.campo_vazio), this)
         } else {
             viewModel.update(
                 NoteModel(
@@ -171,9 +159,9 @@ class EditNoteActivity : AppCompatActivity() {
     private fun checkUpdate() {
         viewModel.updateStatus.observe(this) { status ->
             if(status) {
-                toast(getString(R.string.info_atualizacao_sucesso))
+                showToast(getString(R.string.info_atualizacao_sucesso), this)
             } else {
-                toast(getString(R.string.info_atualizacao_falha))
+                showToast(getString(R.string.info_atualizacao_falha), this)
             }
         }
     }

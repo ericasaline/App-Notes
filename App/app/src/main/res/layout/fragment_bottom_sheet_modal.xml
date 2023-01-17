@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_bottomsheet">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_close"
+        android:layout_margin="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/image_error" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_error"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/close"
+        app:layout_constraintBottom_toTopOf="@id/title_bottomsheet" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title_bottomsheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="42dp"
+        android:padding="15dp"
+        android:text="@string/info_nenhum_resultado"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textAlignment="center"
+        android:letterSpacing="0"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/image_error"
+        app:layout_constraintEnd_toEndOf="@id/image_error"
+        app:layout_constraintTop_toBottomOf="@id/image_error" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

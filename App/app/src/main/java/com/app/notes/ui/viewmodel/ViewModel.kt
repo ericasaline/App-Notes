@@ -58,8 +58,8 @@ class ViewModel(private val repository: Repository): ViewModel() {
         val newlist = list.toMutableList()
         newlist.clear()
         newlist.addAll(
-            list.filter {
-                it.titulo.contains(query, true) || it.conteudo.contains(query, true)
+            list.filter { note ->
+                note.titulo.contains(query, true) || note.conteudo.contains(query, true)
             }
         )
         _notesResult.postValue(newlist)

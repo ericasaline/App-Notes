@@ -10,6 +10,7 @@ import com.app.notes.databinding.ActivityNotesBinding
 import com.app.notes.hideSoftKeyboard
 import com.app.notes.showToast
 import com.app.notes.ui.adapter.NoteAdapter
+import com.app.notes.ui.fragment.BottomSheetModalFragment
 import com.app.notes.ui.viewmodel.ViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -53,6 +54,7 @@ class NotesActivity : AppCompatActivity() {
                 binding.recyclerNotas.visibility = View.GONE
             } else {
                 adapter = NoteAdapter(notes)
+
                 binding.recyclerNotas.adapter = adapter
                 binding.txtInfo.visibility = View.GONE
                 binding.textInputLayout.visibility = View.VISIBLE
@@ -71,9 +73,18 @@ class NotesActivity : AppCompatActivity() {
         binding.inputEditText.setOnKeyListener { _, keycode, keyevent ->
             if(keycode == KeyEvent.KEYCODE_ENTER && keyevent.action == KeyEvent.ACTION_UP) {
                 hideSoftKeyboard()
-                viewModel.search(binding.inputEditText.text.toString())
-                binding.inputEditText.text?.clear()
+
+                var query = binding.inputEditText.text.toString()
+
+                if(query.isEmpty()) {
+                    showToast(getString(R.string.info_campo_busca_vazio), this)
+                } else {
+                    query = query.replace("\\s".toRegex(), "")
+                    viewModel.search(query)
+                    binding.inputEditText.text?.clear()
+                }
             }
+
             false
         }
     }
@@ -81,9 +92,11 @@ class NotesActivity : AppCompatActivity() {
     private fun observeSearch() {
         viewModel.notesResult.observe(this) { notes ->
             if(notes.isEmpty()) {
-                binding.recyclerNotas.visibility = View.GONE
-                showToast(getString(R.string.info_nenhum_resultado), this)
+               BottomSheetModalFragment().show(supportFragmentManager, "EMPTY")
             } else {
+
+                //Fragment
+
                 adapter = NoteAdapter(notes)
                 binding.recyclerNotas.adapter = adapter
                 binding.recyclerNotas.visibility = View.VISIBLE
@@ -93,6 +106,8 @@ class NotesActivity : AppCompatActivity() {
                     intent.putExtra("Note", id)
                     startActivity(intent)
                 }
+
+
             }
         }
     }

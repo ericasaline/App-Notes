@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.app.notes.databinding.ActivityEditNoteBinding
 import com.app.notes.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

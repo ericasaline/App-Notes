@@ -43,11 +43,13 @@ class EditNoteActivity : AppCompatActivity() {
         binding.toolbar.setOnMenuItemClickListener { option ->
             when(option.itemId) {
                 R.id.menu_salvar -> {
+
                     if(checkNote) {
                         update()
                     } else {
                         insert()
                     }
+
                     clearFocus()
                     true
                 }
@@ -102,7 +104,6 @@ class EditNoteActivity : AppCompatActivity() {
         viewModel.note.observe(this) { note ->
             if (note != null) {
                 checkNote = true
-
                 binding.editTitulo.setText(note.titulo)
                 binding.editConteudo.setText(note.conteudo)
             }

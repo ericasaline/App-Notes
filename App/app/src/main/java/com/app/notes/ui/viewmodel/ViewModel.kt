@@ -28,6 +28,9 @@ class ViewModel(private val repository: Repository): ViewModel() {
     private val _notesResult = MutableLiveData<List<NoteModel>>()
     val notesResult: LiveData<List<NoteModel>> get() = _notesResult
 
+    private val _newList = MutableLiveData<List<NoteModel>>()
+    val newList: LiveData<List<NoteModel>> get() = _newList
+
     fun insert(note: NoteModel) = viewModelScope.launch {
         val result = repository.insert(note)
         _insertStatus.postValue(result)
@@ -51,6 +54,11 @@ class ViewModel(private val repository: Repository): ViewModel() {
     fun showAll() = viewModelScope.launch {
         val notes = repository.showAll()
         _notes.postValue(notes)
+    }
+
+    fun reload() = viewModelScope.launch {
+        val newList = repository.showAll()
+        _newList.postValue(newList)
     }
 
     fun search(query: String) = viewModelScope.launch {

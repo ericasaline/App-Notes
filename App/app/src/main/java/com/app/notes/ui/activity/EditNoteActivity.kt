@@ -25,12 +25,7 @@ class EditNoteActivity : AppCompatActivity() {
         binding = ActivityEditNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        intent.getStringExtra("Note")?.let { noteId ->
-            id = noteId
-        }
-
-        viewModel.showNote(id)
-
+        init()
         observeNote()
         onClickBack()
         menu()
@@ -39,17 +34,21 @@ class EditNoteActivity : AppCompatActivity() {
         checkInsert()
     }
 
+    private fun init() {
+        intent.getStringExtra("Note")?.let { noteId -> id = noteId }
+        viewModel.showNote(id)
+        binding.editTitulo.requestFocus()
+    }
+
     private fun menu() {
         binding.toolbar.setOnMenuItemClickListener { option ->
             when(option.itemId) {
                 R.id.menu_salvar -> {
-
                     if(checkNote) {
                         update()
                     } else {
                         insert()
                     }
-
                     clearFocus()
                     true
                 }

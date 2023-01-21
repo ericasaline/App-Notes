@@ -1,4 +1,4 @@
-package com.app.notes.ui.fragment
+package com.app.notes.ui.dialog
 
 import android.app.Dialog
 import android.os.Bundle

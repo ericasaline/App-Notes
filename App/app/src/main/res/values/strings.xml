@@ -9,6 +9,9 @@
     <string name="conteudo">Conteúdo</string>
     <string name="confirmar_delecao">Deseja realmente deletar essa nota ? \nEssa ação não poderá ser desfeita!</string>
     <string name="cancelar">Cancelar</string>
+    <string name="pesquisar">Pesquisar</string>
+    <string name="campo_vazio">Não há nada para salvar!</string>
+    <string name="busca">"Lorem"</string>
     <string name="info_delecao_sucesso">Nota Excluída!</string>
     <string name="info_delecao_falha">Erro ao excluir!</string>
     <string name="info_atualizacao_sucesso">Nota Atualizada!</string>
@@ -16,7 +19,6 @@
     <string name="info_insercao_sucesso">Nota Criada!</string>
     <string name="info_insercao_falha">Erro ao Criar!</string>
     <string name="info_nenhum_resultado">Sua busca não retornou nenhum \nresultado!</string>
-    <string name="pesquisar">Pesquisar</string>
-    <string name="campo_vazio">Não há nada para salvar!</string>
     <string name="info_campo_busca_vazio">Campo vazio!</string>
+    <string name="voltar">Voltar</string>
 </resources>

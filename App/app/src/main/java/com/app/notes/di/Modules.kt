@@ -4,7 +4,8 @@ import androidx.room.Room
 import com.app.notes.database.NoteDatabase
 import com.app.notes.database.repository.Repository
 import com.app.notes.database.repository.RepositoryImpl
-import com.app.notes.ui.viewmodel.ViewModel
+import com.app.notes.ui.viewmodel.EditNoteViewModel
+import com.app.notes.ui.viewmodel.NotesViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -30,7 +31,6 @@ val dataModule = module {
 }
 
 val viewModelModule = module {
-    viewModel {
-        ViewModel(get())
-    }
+    viewModel { NotesViewModel(get()) }
+    viewModel { EditNoteViewModel(get()) }
 }

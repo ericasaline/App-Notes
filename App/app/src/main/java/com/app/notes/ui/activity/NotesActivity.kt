@@ -14,14 +14,14 @@ import com.app.notes.ui.adapter.NoteAdapter
 import com.app.notes.ui.dialog.BottomSheetModalFragment
 import com.app.notes.ui.fragment.SearchResultFragment
 import com.app.notes.ui.fragment.SearchResultFragment.Companion.TAG
-import com.app.notes.ui.viewmodel.ViewModel
+import com.app.notes.ui.viewmodel.NotesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NotesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNotesBinding
     private lateinit var adapter: NoteAdapter
-    private val viewModel: ViewModel by viewModel()
+    private val viewModel: NotesViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,16 +38,17 @@ class NotesActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-//        //Teste
-//        adapter.adapterUpdate(viewModel.reloadNotes())
-
         viewModel.reload()
         realodNotes()
     }
 
     private fun createNote() {
         binding.btnAdicionar.setOnClickListener {
-            startActivity(Intent(this@NotesActivity, EditNoteActivity::class.java))
+            startActivity(
+                Intent(
+                    this@NotesActivity, EditNoteActivity::class.java
+                )
+            )
         }
     }
 
@@ -59,14 +60,17 @@ class NotesActivity : AppCompatActivity() {
                 binding.recyclerNotas.visibility = View.GONE
                 binding.fragmentContainer.visibility = View.GONE
             } else {
-                adapter.adapterUpdate(notes)
+                adapter = NoteAdapter(notes)
+                binding.recyclerNotas.adapter = adapter
                 binding.txtInfo.visibility = View.GONE
                 binding.fragmentContainer.visibility = View.GONE
                 binding.textInputLayout.visibility = View.VISIBLE
                 binding.recyclerNotas.visibility = View.VISIBLE
 
                 adapter.onClickItem = { id ->
-                    val intent = Intent(this@NotesActivity, EditNoteActivity::class.java)
+                    val intent = Intent(
+                        this@NotesActivity, EditNoteActivity::class.java
+                    )
                     intent.putExtra("Note", id)
                     startActivity(intent)
                 }
@@ -78,7 +82,6 @@ class NotesActivity : AppCompatActivity() {
         binding.inputEditText.setOnKeyListener { _, keycode, keyevent ->
             if(keycode == KeyEvent.KEYCODE_ENTER && keyevent.action == KeyEvent.ACTION_UP) {
                 hideSoftKeyboard()
-
                 var query = binding.inputEditText.text.toString()
 
                 if(query.isEmpty()) {
@@ -135,16 +138,16 @@ class NotesActivity : AppCompatActivity() {
                 binding.recyclerNotas.visibility = View.GONE
                 binding.fragmentContainer.visibility = View.GONE
             } else {
-                adapter = NoteAdapter(notes)
-
-                binding.recyclerNotas.adapter = adapter
+                adapter.adapterUpdate(notes)
                 binding.txtInfo.visibility = View.GONE
                 binding.fragmentContainer.visibility = View.GONE
                 binding.textInputLayout.visibility = View.VISIBLE
                 binding.recyclerNotas.visibility = View.VISIBLE
 
                 adapter.onClickItem = { id ->
-                    val intent = Intent(this@NotesActivity, EditNoteActivity::class.java)
+                    val intent = Intent(
+                        this@NotesActivity, EditNoteActivity::class.java
+                    )
                     intent.putExtra("Note", id)
                     startActivity(intent)
                 }

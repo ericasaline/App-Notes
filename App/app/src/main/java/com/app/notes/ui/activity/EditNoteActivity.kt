@@ -9,7 +9,7 @@ import com.app.notes.databinding.ActivityEditNoteBinding
 import com.app.notes.databinding.DialogInfoBinding
 import com.app.notes.hideSoftKeyboard
 import com.app.notes.showToast
-import com.app.notes.ui.viewmodel.ViewModel
+import com.app.notes.ui.viewmodel.EditNoteViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -17,7 +17,7 @@ class EditNoteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditNoteBinding
     private var id: String = UUID.randomUUID().toString()
-    private val viewModel: ViewModel by viewModel()
+    private val viewModel: EditNoteViewModel by viewModel()
     private var checkNote = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +35,9 @@ class EditNoteActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        intent.getStringExtra("Note")?.let { noteId -> id = noteId }
+        intent.getStringExtra("Note")?.let { noteId ->
+            id = noteId
+        }
         viewModel.showNote(id)
         binding.editTitulo.requestFocus()
     }
@@ -54,6 +56,7 @@ class EditNoteActivity : AppCompatActivity() {
                 }
 
                 R.id.menu_excluir -> {
+                    clearFocus()
                     showDialog()
                     true
                 }

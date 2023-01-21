@@ -12,6 +12,7 @@
     <string name="pesquisar">Pesquisar</string>
     <string name="campo_vazio">Não há nada para salvar!</string>
     <string name="busca">"Lorem"</string>
+    <string name="voltar">Voltar</string>
     <string name="info_delecao_sucesso">Nota Excluída!</string>
     <string name="info_delecao_falha">Erro ao excluir!</string>
     <string name="info_atualizacao_sucesso">Nota Atualizada!</string>
@@ -20,5 +21,4 @@
     <string name="info_insercao_falha">Erro ao Criar!</string>
     <string name="info_nenhum_resultado">Sua busca não retornou nenhum \nresultado!</string>
     <string name="info_campo_busca_vazio">Campo vazio!</string>
-    <string name="voltar">Voltar</string>
 </resources>

@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.notes.database.entity.NoteModel
 import com.app.notes.databinding.ItemNoteBinding
 
-class NoteAdapter(private val notes: List<NoteModel>)
+class NoteAdapter(notes: List<NoteModel>)
     : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
 
+    private val notes = notes.toMutableList()
     var onClickItem: (id: String) -> Unit = {}
-    private val list = notes.toMutableList()
 
     inner class ViewHolder(binding: ItemNoteBinding)
         : RecyclerView.ViewHolder(binding.root) {
@@ -27,13 +27,6 @@ class NoteAdapter(private val notes: List<NoteModel>)
                 onClickItem(note.id)
             }
         }
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun adapterUpdate(notes: List<NoteModel>) {
-        list.clear()
-        list.addAll(notes)
-        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -52,4 +45,10 @@ class NoteAdapter(private val notes: List<NoteModel>)
 
     override fun getItemCount(): Int = notes.size
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun adapterUpdate(list: List<NoteModel>) {
+        this.notes.clear()
+        this.notes.addAll(list)
+        notifyDataSetChanged()
+    }
 }

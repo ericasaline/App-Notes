@@ -120,7 +120,7 @@ class EditNoteActivity : AppCompatActivity() {
     private fun insert() {
         val emptyField = emptyVerify()
         if(emptyField) {
-            showToast(getString(R.string.campo_vazio), this)
+            showToast(getString(R.string.info_campos_vazios), this)
         } else {
             viewModel.insert(
                 NoteModel(
@@ -146,7 +146,7 @@ class EditNoteActivity : AppCompatActivity() {
     private fun update() {
         val emptyField = emptyVerify()
         if(emptyField) {
-            showToast(getString(R.string.campo_vazio), this)
+            showToast(getString(R.string.info_campos_vazios), this)
         } else {
             viewModel.update(
                 NoteModel(

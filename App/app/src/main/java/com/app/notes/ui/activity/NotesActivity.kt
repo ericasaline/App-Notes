@@ -38,7 +38,7 @@ class NotesActivity : AppCompatActivity() {
         super.onResume()
 
         viewModel.showAll()
-        showNotes()
+        clearScreen()
     }
 
     private fun createNote() {
@@ -87,7 +87,6 @@ class NotesActivity : AppCompatActivity() {
             if(keycode == KeyEvent.KEYCODE_ENTER && keyevent.action == KeyEvent.ACTION_UP) {
                 hideSoftKeyboard()
                 val query = binding.inputEditText.text.toString()
-
                 if(query.isEmpty()) {
                     showToast(getString(R.string.info_campo_busca_vazio), this)
                 } else {
@@ -115,12 +114,17 @@ class NotesActivity : AppCompatActivity() {
 
     private fun onClickBack() {
         binding.btnBack.setOnClickListener {
-            binding.btnBack.visibility = View.GONE
-            binding.results.visibility = View.GONE
-            binding.btnAdicionar.visibility = View.VISIBLE
-            viewModel.showAll()
-            binding.inputEditText.text?.clear()
-            showNotes()
+            clearScreen()
         }
+    }
+
+    private fun clearScreen() {
+        binding.inputEditText.text?.clear()
+        binding.btnBack.visibility = View.GONE
+        binding.results.visibility = View.GONE
+        binding.btnAdicionar.visibility = View.VISIBLE
+        viewModel.showAll()
+        binding.inputEditText.text?.clear()
+        showNotes()
     }
 }

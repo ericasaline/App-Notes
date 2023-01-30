@@ -54,13 +54,11 @@ class EditNoteActivity : AppCompatActivity() {
                     clearFocus()
                     true
                 }
-
                 R.id.menu_excluir -> {
                     clearFocus()
                     showDialog()
                     true
                 }
-
                 else -> false
             }
         }

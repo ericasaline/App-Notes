@@ -13,32 +13,25 @@ class NotesViewModel(private val repository: Repository): ViewModel() {
     private val _notes = MutableLiveData<List<NoteModel>>()
     val notes: LiveData<List<NoteModel>> get() = _notes
 
-    private val _newList = MutableLiveData<List<NoteModel>>()
-    val newList: LiveData<List<NoteModel>> get() = _newList
-
-    private val _notesResult = MutableLiveData<List<NoteModel>>()
-    val notesResult: LiveData<List<NoteModel>> get() = _notesResult
+    private val _searchWithQuery = MutableLiveData<List<NoteModel>>()
+    val searchWithQuery: LiveData<List<NoteModel>> get() = _searchWithQuery
 
     fun showAll() = viewModelScope.launch {
         val notes = repository.showAll()
         _notes.postValue(notes)
     }
 
-    fun reload() = viewModelScope.launch {
-        val newList = repository.showAll()
-        _newList.postValue(newList)
-    }
-
     fun search(query: String) = viewModelScope.launch {
+        val value = query.replace("\\s".toRegex(), "")
         val list = repository.showAll()
-        val newlist = list.toMutableList()
-        newlist.clear()
-        newlist.addAll(
+        val notes = list.toMutableList()
+        notes.clear()
+        notes.addAll(
             list.filter { note ->
-                note.titulo.contains(query, true) ||
-                note.conteudo.contains(query, true)
+                note.titulo.contains(value, true) ||
+                note.conteudo.contains(value, true)
             }
         )
-        _notesResult.postValue(newlist)
+        _searchWithQuery.postValue(notes)
     }
 }

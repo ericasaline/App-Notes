@@ -1,6 +1,5 @@
 package com.app.notes.ui.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -45,10 +44,4 @@ class NoteAdapter(notes: List<NoteModel>)
 
     override fun getItemCount(): Int = notes.size
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun adapterUpdate(list: List<NoteModel>) {
-        this.notes.clear()
-        this.notes.addAll(list)
-        notifyDataSetChanged()
-    }
 }

@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import com.app.notes.databinding.FragmentBottomSheetModalBinding
+import com.app.notes.databinding.BottomSheetModalInfoBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class BottomSheetModalFragment: BottomSheetDialogFragment() {
+class BottomSheetModal: BottomSheetDialogFragment() {
 
-    private var _binding: FragmentBottomSheetModalBinding? = null
+    private var _binding: BottomSheetModalInfoBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,7 +19,7 @@ class BottomSheetModalFragment: BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentBottomSheetModalBinding.inflate(
+        _binding = BottomSheetModalInfoBinding.inflate(
             layoutInflater, null, false
         )
         return binding.root

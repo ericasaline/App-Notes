@@ -21,4 +21,8 @@
     <string name="info_insercao_falha">Erro ao Criar!</string>
     <string name="info_campo_busca_vazio">Campo vazio!</string>
     <string name="info_campos_vazios">Não há nada para salvar!</string>
+    <plurals name="resultados">
+        <item quantity="one">Sua busca retornou 1 resultado:</item>
+        <item quantity="other">Sua busca retornou %1$d resultados:</item>
+    </plurals>
 </resources>

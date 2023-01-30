@@ -10,7 +10,7 @@ import com.app.notes.database.entity.NoteModel
 import com.app.notes.databinding.ActivityNotesBinding
 import com.app.notes.hideSoftKeyboard
 import com.app.notes.showToast
-import com.app.notes.ui.adapter.NoteAdapter
+import com.app.notes.ui.adapter.NotesAdapter
 import com.app.notes.ui.dialog.BottomSheetModal
 import com.app.notes.ui.viewmodel.NotesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class NotesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNotesBinding
-    private lateinit var adapter: NoteAdapter
+    private lateinit var adapter: NotesAdapter
     private val viewModel: NotesViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +52,7 @@ class NotesActivity : AppCompatActivity() {
     }
 
     private fun createAdapter(notes: List<NoteModel>) {
-        adapter = NoteAdapter(notes)
+        adapter = NotesAdapter(notes)
         binding.recyclerNotas.adapter = adapter
         binding.txtInfo.visibility = View.GONE
         binding.textInputLayout.visibility = View.VISIBLE
@@ -71,8 +71,11 @@ class NotesActivity : AppCompatActivity() {
         viewModel.notes.observe(this) { notes ->
             if(notes.isEmpty()) {
                 binding.txtInfo.visibility = View.VISIBLE
+                binding.btnAdicionar.visibility = View.VISIBLE
                 binding.textInputLayout.visibility = View.GONE
                 binding.recyclerNotas.visibility = View.GONE
+                binding.btnBack.visibility = View.GONE
+                binding.results.visibility = View.GONE
             } else {
                 createAdapter(notes)
             }
@@ -103,6 +106,8 @@ class NotesActivity : AppCompatActivity() {
             } else {
                 binding.btnAdicionar.visibility = View.GONE
                 binding.btnBack.visibility = View.VISIBLE
+                binding.results.visibility = View.VISIBLE
+                binding.results.text = resources.getQuantityString(R.plurals.resultados, notes.size, notes.size)
                 createAdapter(notes)
             }
         }
@@ -111,6 +116,7 @@ class NotesActivity : AppCompatActivity() {
     private fun onClickBack() {
         binding.btnBack.setOnClickListener {
             binding.btnBack.visibility = View.GONE
+            binding.results.visibility = View.GONE
             binding.btnAdicionar.visibility = View.VISIBLE
             viewModel.showAll()
             binding.inputEditText.text?.clear()

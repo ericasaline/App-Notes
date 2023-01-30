@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.notes.database.entity.NoteModel
 import com.app.notes.databinding.ItemNoteBinding
 
-class NoteAdapter(notes: List<NoteModel>)
-    : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
+class NotesAdapter(notes: List<NoteModel>)
+    : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
     private val notes = notes.toMutableList()
     var onClickItem: (id: String) -> Unit = {}

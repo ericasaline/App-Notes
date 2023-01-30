@@ -49,6 +49,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_notas"
+        app:layout_constraintBottom_toTopOf="@id/results"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -63,20 +64,35 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/results"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_light"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@id/textInputLayout"
+        app:layout_constraintEnd_toEndOf="@id/textInputLayout"
+        tools:text="Sua busca retornou 5 resultados" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_notas"
         android:visibility="visible"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintStart_toStartOf="@id/textInputLayout"
         app:layout_constraintEnd_toEndOf="@id/textInputLayout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/results"
+        app:layout_constraintBottom_toTopOf="@id/btn_back"
         app:spanCount="2"
         tools:listitem="@layout/item_note"
-        tools:itemCount="3" />
+        tools:itemCount="13" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_adicionar"
@@ -107,8 +123,8 @@
         app:strokeWidth="3dp"
         app:cornerRadius="35dp"
         app:backgroundTint="@color/light_pink"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

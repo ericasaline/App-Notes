@@ -17,8 +17,8 @@ class EditNoteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditNoteBinding
     private var id: String = UUID.randomUUID().toString()
-    private val viewModel: EditNoteViewModel by viewModel()
     private var checkNote = false
+    private val viewModel: EditNoteViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

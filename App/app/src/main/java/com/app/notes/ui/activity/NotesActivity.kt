@@ -37,7 +37,6 @@ class NotesActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        viewModel.showAll()
         clearScreen()
     }
 
@@ -124,7 +123,6 @@ class NotesActivity : AppCompatActivity() {
         binding.results.visibility = View.GONE
         binding.btnAdicionar.visibility = View.VISIBLE
         viewModel.showAll()
-        binding.inputEditText.text?.clear()
         showNotes()
     }
 }

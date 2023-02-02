@@ -117,6 +117,9 @@ class NotesActivity : AppCompatActivity() {
 
     private fun newScreen() {
         binding.inputEditText.text?.clear()
+        binding.btnBack.visibility = View.GONE
+        binding.results.visibility = View.GONE
+        binding.btnAdicionar.visibility = View.VISIBLE
         viewModel.showAll()
         showNotes()
     }

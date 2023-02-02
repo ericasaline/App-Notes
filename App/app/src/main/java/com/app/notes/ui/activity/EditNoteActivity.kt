@@ -35,9 +35,7 @@ class EditNoteActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        intent.getStringExtra("Note")?.let { noteId ->
-            id = noteId
-        }
+        intent.getStringExtra("Note")?.let { noteId -> id = noteId }
         viewModel.showNote(id)
         binding.editTitulo.requestFocus()
     }

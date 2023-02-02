@@ -58,9 +58,7 @@ class NotesActivity : AppCompatActivity() {
         binding.recyclerNotas.visibility = View.VISIBLE
 
         adapter.onClickItem = { id ->
-            val intent = Intent(
-                this@NotesActivity, EditNoteActivity::class.java
-            )
+            val intent = Intent(this@NotesActivity, EditNoteActivity::class.java)
             intent.putExtra("Note", id)
             startActivity(intent)
         }

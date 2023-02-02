@@ -26,6 +26,7 @@
 
 #### > Toast de Informação
 <div>
+  <img src="https://github.com/ericasaline/App-Notes/blob/main/Imgs/toast-nota-vazia.png" alt="Toast: Nota Vazia" height="380"/>
   <img src="https://github.com/ericasaline/App-Notes/blob/main/Imgs/toast-nota-criada.png" alt="Toast: Nota Criada" height="380"/>
   <img src="https://github.com/ericasaline/App-Notes/blob/main/Imgs/toast-nota-atualizada.png" alt="Toast: Nota Atualizada" height="380"/>
   <img src="https://github.com/ericasaline/App-Notes/blob/main/Imgs/toast-nota-excluida.png" alt="Toast: Nota Excluída" height="380"/>

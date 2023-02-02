@@ -37,7 +37,7 @@ class NotesActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        clearScreen()
+        newScreen()
     }
 
     private fun createNote() {
@@ -113,15 +113,12 @@ class NotesActivity : AppCompatActivity() {
 
     private fun onClickBack() {
         binding.btnBack.setOnClickListener {
-            clearScreen()
+            newScreen()
         }
     }
 
-    private fun clearScreen() {
+    private fun newScreen() {
         binding.inputEditText.text?.clear()
-        binding.btnBack.visibility = View.GONE
-        binding.results.visibility = View.GONE
-        binding.btnAdicionar.visibility = View.VISIBLE
         viewModel.showAll()
         showNotes()
     }
